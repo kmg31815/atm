@@ -1,5 +1,6 @@
 package com.kmg.atm;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,12 +12,23 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        EditText edUserid = findViewById(R.id.ed_userid);
+        String userid = getSharedPreferences("atm" , MODE_PRIVATE)
+                .getString("USERID" , "");
+        edUserid.setText(userid);
     }
 
     public void login(View view){
         String userid = ((EditText)findViewById(R.id.ed_userid)).getText().toString();
         String password = ((EditText)findViewById(R.id.ed_password)).getText().toString();
-        if("Jack".equals(userid) && "1234".equals(password)){
+        if("jack".equals(userid) && "1234".equals(password)){
+            getSharedPreferences("atm" , MODE_PRIVATE)
+                    .edit()
+                    .putString("USERID" , userid)
+                    .apply();
+            finish();
+        }else{
+            setResult(RESULT_CANCELED);
             finish();
         }
     }
