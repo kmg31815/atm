@@ -1,5 +1,6 @@
 package com.kmg.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,17 @@ public class AgeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age);
     }
-    public void age(View view){
-        EditText edAge = findViewById(R.id.ed_nickname);
-        String age = ((EditText)findViewById(R.id.ed_nickname)).getText().toString();
-        getSharedPreferences("age" , MODE_PRIVATE)
+    public void next(View view){
+        int age = Integer.parseInt(((EditText)findViewById(R.id.ed_age)).getText().toString());
+        getSharedPreferences("user" , MODE_PRIVATE)
                 .edit()
-                .putString("AGE" , age)
+                .putInt("AGE" , age)
                 .apply();
+        Intent gender = new Intent(this, GenderActivity.class);
+        startActivity(gender);
+    }
+
+    public void back(View view){
+        finish();
     }
 }

@@ -1,5 +1,6 @@
 package com.kmg.atm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,12 +13,14 @@ public class NickNameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nick_name);
     }
-    public void nickname(View view){
+    public void next(View view){
         EditText edNickName = findViewById(R.id.ed_nickname);
-        String nickname = ((EditText)findViewById(R.id.ed_nickname)).getText().toString();
-        getSharedPreferences("NickName" , MODE_PRIVATE)
+        String nickname = edNickName.getText().toString();
+        getSharedPreferences("user" , MODE_PRIVATE)
                 .edit()
                 .putString("NICKNAME" , nickname)
                 .apply();
+        Intent age = new Intent(this, AgeActivity.class);
+        startActivity(age);
     }
 }
