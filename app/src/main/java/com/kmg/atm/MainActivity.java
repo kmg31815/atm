@@ -3,6 +3,12 @@ package com.kmg.atm;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.Arrays;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final int RC_LOGIN = 100;
@@ -16,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
 //            startActivity(intent);
             startActivityForResult(intent, RC_LOGIN);
         }
+
+        List<String> fruits = Arrays.asList("香蕉","芭樂","鳳梨");
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1 , fruits);
+        ListView listview = findViewById(R.id.list);
+        listview.setAdapter(adapter);
     }
 
     @Override
