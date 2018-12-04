@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(intent, RC_LOGIN);
         }
 
-        List<String> fruits = Arrays.asList("香蕉","芭樂","鳳梨");
+        List<String> fruits = Arrays.asList("香蕉","芭樂","西瓜");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this , android.R.layout.simple_list_item_1 , fruits);
         ListView listview = findViewById(R.id.list);
         listview.setAdapter(adapter);
@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             } else {
                 /*
-                TODO: check nickname, age, gender exists
                 Intent nickname = new Intent(this, NickNameActivity.class);
                 startActivity(nickname);
                 */
