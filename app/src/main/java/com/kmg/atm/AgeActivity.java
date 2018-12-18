@@ -22,7 +22,7 @@ public class AgeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age);
-        RecyclerView recyclerView = findViewById(R.id.recycle);
+        RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new AgeAdapter());
@@ -55,7 +55,7 @@ public class AgeActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull AgeViewHolder holder, final int position) {
             holder.ageView.setText(number[position]+"");
-        
+
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
